@@ -95,12 +95,20 @@
       const showData = () => {
         let firstname = document.getElementById("firstname").value;
         let surname = document.getElementById("surname").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let gender = document.getElementsByName("gender");
+        let pronoun = document.getElementById("prSelect").value;
+        let g = ""
+        if (gender[0].checked) g = "Female";
+        if (gender[1].checked) g = "Male";
+        if (gender[2].checked) g = pronoun;
         let str = `
         <div>
           Name:${firstname} ${surname}<br>
-          Date of Birth:${day.value}/${month.value}/${year.value}<br>
-          Gender:${document.querySelector('input').checked}<br>
-          Mobile number or email address:${document.querySelector('input').value}
+          Email:${email}<br>
+            Password:${password}<br>
+          Gender:${g}<br>
         </div>
         `;
         root.innerHTML = str;
@@ -149,18 +157,18 @@
 
      <div class="row">
       <select id="prSelect" style="display:none">
-        <option>Select your pronoun</option>
-        <option>She:"Wish her a happy birthday"</option>
-        <option>He:"Wish him a happy birthday"</option>
-        <option>They:"Wish them a happy birthday"</option>
+        <option value = "NA">Select your pronoun</option>
+        <option value = "She">She:"Wish her a happy birthday"</option>
+        <option value = "He">He:"Wish him a happy birthday"</option>
+        <option value = "They">They:"Wish them a happy birthday"</option>
       </select>
      </div>
 
       <div class="row">
-        <input type="text" placeholder="Mobile number or email address" />
+        <input type="text" id="email" placeholder="Mobile number or email address" />
       </div>
       <div class="row">
-        <input type="password" placeholder="New password" />
+        <input type="password" id="password" placeholder="New password" />
       </div>
       <div class="row">
         <button onclick='showData()'>Sign Up</button>
